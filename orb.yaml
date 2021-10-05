@@ -1,23 +1,26 @@
 version: 2.1
 
-description: >
-  Sample example description.
-# Provide a use-case based example for using this orb.
-# Everything in the `usage` section will be displayed in the orb registry.
-# Comments are not retained.
+jobs:
+  test:
+    docker:
+      - image: busybox
+    steps:
+      - checkout
+      - run:
+          name: hello
+          command: echo "hello"
+
+workflows:
+  test_my_app:
+    jobs:
+      - test
+
 usage:
   version: 2.1
   orbs:
   kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.3
-  commands:
-    hello:
-      steps:
-         - run: echo "Hello"
-  jobs:
-    first:
-       steps:
-         - hello
+
   workflows:
-    use-my-orb:
+    test_my_app:
       jobs:
-        - first
+        - test

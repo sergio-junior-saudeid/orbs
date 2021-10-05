@@ -8,8 +8,16 @@ description: >
 usage:
   version: 2.1
   orbs:
-  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@dev:alpha
+  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.3
+  commands:
+    hello:
+      steps:
+         - run: echo "Hello"
+  jobs:
+    first:
+       steps:
+         - hello
   workflows:
     use-my-orb:
       jobs:
-        - <orb-name>/<job-name>
+        - first

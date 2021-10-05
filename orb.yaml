@@ -2,13 +2,13 @@ version: 2.1
 
 jobs:
   test:
-    docker:
-      - image: busybox
+    machine:
+      image: ubuntu-1604:202007-01
     steps:
       - checkout
       - run:
           name: hello
-          command: echo "hello"
+          command: ls
 
 workflows:
   test_my_app:
@@ -18,7 +18,7 @@ workflows:
 usage:
   version: 2.1
   orbs:
-  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.3
+  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.8
 
   workflows:
     test_my_app:

@@ -17,6 +17,9 @@ jobs:
       - run:
           name: check-kubernetes
           command: kubectl version --client
+      - run:
+          name: Namespaces
+          command: kubectl get namespaces
 
 workflow:
   build:

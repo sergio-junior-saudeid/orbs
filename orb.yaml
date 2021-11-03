@@ -13,7 +13,7 @@ jobs:
             git clone 
       - run:
           name: hello
-          command: ls
+          command: echo $CLUSTER_KUBERNETES
           dir: ./src/
 
 workflow:
@@ -24,8 +24,12 @@ workflow:
 usage:
   version: 2.1
   orbs:
-  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.16
+    kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.16
 
   workflows:
-    test:
+    build:
+      jobs:
+        - kubernetes-gke-publish/test:
+            context:
+            - dev
     

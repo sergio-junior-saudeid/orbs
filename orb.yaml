@@ -17,13 +17,14 @@ jobs:
           dir: ./src/
 
 workflow:
-  jobs:
-    - test
+  build:
+    jobs:
+      - test
 
 usage:
   version: 2.1
   orbs:
-  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.15
+  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.16
 
   workflows:
     test:

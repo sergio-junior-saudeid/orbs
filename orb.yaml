@@ -8,10 +8,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: orb
-          command: |
-            git clone 
-      - run:
           name: hello
           command: echo $CLUSTER_KUBERNETES
           dir: ./src/

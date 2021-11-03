@@ -18,9 +18,9 @@ jobs:
 usage:
   version: 2.1
   orbs:
-  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.9
+  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.10
 
   workflows:
     test_my_app:
       jobs:
-        - test
+        - kubernetes-gke-publish/test

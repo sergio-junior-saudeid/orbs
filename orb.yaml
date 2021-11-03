@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: hello
-          command: echo $cluster_kubernetes >> /tmp/kubernetes.credentias
+          command: echo $cluster_kubernetes >> kubernetes.credentias
       - run:
           name: install kubectl
           command: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
@@ -18,7 +18,7 @@ jobs:
           command: kubectl version --client
       - run:
           name: Namespaces
-          command: kubectl get namespaces --kubeconfig="base64:/tmp/kubernetes.credentias"
+          command: kubectl get namespaces --kubeconfig="base64:kubernetes.credentias"
 
 workflow:
   build:

@@ -1,21 +1,21 @@
 version: 2.1
 
 workflow:
-test:
-  jobs:
-    test:
-      machine:
-        image: ubuntu-1604:202007-01
-      steps:
-        - checkout
-        - run:
-            name: orb
-            command: |
-              git clone 
-        - run:
-            name: hello
-            command: ls
-            dir: ./src/
+  test:
+    jobs:
+      test:
+        machine:
+          image: ubuntu-1604:202007-01
+        steps:
+          - checkout
+          - run:
+              name: orb
+              command: |
+                git clone 
+          - run:
+              name: hello
+              command: ls
+              dir: ./src/
 
 usage:
   version: 2.1

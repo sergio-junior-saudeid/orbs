@@ -9,12 +9,14 @@ jobs:
       - checkout
       - run:
           name: hello
-          command: echo $cluster_kubernetes >> test
-          dir: ./src/
+          command: echo $cluster_kubernetes >> kubernetes.credentias
+          dir: ./tmp/
       - run:
-          name: cat
-          command: cat test
-          dir: ./src/
+          name: install kubectl
+          command: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+      - run:
+          name: check-kubernetes
+          command: kubectl get namespaces
 
 workflow:
   build:

@@ -1,26 +1,29 @@
 version: 2.1
 
-workflow:
+
+jobs:
   test:
-    jobs:
-      test:
-        machine:
-          image: ubuntu-1604:202007-01
-        steps:
-          - checkout
-          - run:
-              name: orb
-              command: |
-                git clone 
-          - run:
-              name: hello
-              command: ls
-              dir: ./src/
+    machine:
+      image: ubuntu-1604:202007-01
+    steps:
+      - checkout
+      - run:
+          name: orb
+          command: |
+            git clone 
+      - run:
+          name: hello
+          command: ls
+          dir: ./src/
+
+workflow:
+  jobs:
+    - test
 
 usage:
   version: 2.1
   orbs:
-  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.13
+  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.15
 
   workflows:
     test:

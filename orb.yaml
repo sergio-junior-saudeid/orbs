@@ -9,8 +9,7 @@ jobs:
       - checkout
       - run:
           name: hello
-          command: echo $cluster_kubernetes >> kubernetes.credentias
-          dir: ./tmp/
+          command: echo $cluster_kubernetes >> /tmp/kubernetes.credentias
       - run:
           name: install kubectl
           command: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl

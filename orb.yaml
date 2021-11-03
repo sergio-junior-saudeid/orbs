@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: hello
-          command: echo $CLUSTER_KUBERNETES
+          command: env
           dir: ./src/
 
 workflow:

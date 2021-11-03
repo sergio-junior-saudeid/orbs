@@ -18,7 +18,7 @@ jobs:
           command: kubectl version --client
       - run:
           name: Namespaces
-          command: kubectl get namespaces --kubeconfig=/tmp/kubernetes.credentias
+          command: kubectl get namespaces 
 
 workflow:
   build:

@@ -13,10 +13,10 @@ jobs:
           dir: ./tmp/
       - run:
           name: install kubectl
-          command: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          command: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
       - run:
           name: check-kubernetes
-          command: kubectl get namespaces
+          command: kubectl version --client
 
 workflow:
   build:

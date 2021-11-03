@@ -1,34 +1,27 @@
 version: 2.1
 
-workflows:
-  gke:
+workflow:
+test:
   jobs:
-    - build-deploy:
-        context:
-        - dev
-
-
-jobs:
-  build-deploy:
-    machine:
-      image: ubuntu-1604:202007-01
-    steps:
-      - checkout
-      - run:
-          name: orb
-          command: |
-            git clone 
-      - run:
-          name: hello
-          command: ls
-          dir: echo $cluster_kubernetes
-      
-
+    test:
+      machine:
+        image: ubuntu-1604:202007-01
+      steps:
+        - checkout
+        - run:
+            name: orb
+            command: |
+              git clone 
+        - run:
+            name: hello
+            command: ls
+            dir: ./src/
 
 usage:
   version: 2.1
   orbs:
-  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.12
+  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.13
 
   workflows:
-    - kubernetes-gke-publish/gke
+    test:
+    

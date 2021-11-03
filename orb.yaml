@@ -18,7 +18,7 @@ jobs:
           command: kubectl version --client
       - run:
           name: Namespaces
-          command: kubectl get namespaces --kubeconfig="base64:$KUBECONFIG"
+          command: kubectl get namespaces --kubeconfig="base64:$cluster_kubernetes"
 
 workflow:
   build:

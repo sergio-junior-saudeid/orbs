@@ -9,7 +9,11 @@ jobs:
       - checkout
       - run:
           name: hello
-          command: env
+          command: echo $cluster_kubernetes >> test
+          dir: ./src/
+      - run:
+          name: cat
+          command: cat test
           dir: ./src/
 
 workflow:

@@ -1,7 +1,15 @@
 version: 2.1
 
+workflows:
+  gke:
+  jobs:
+    - build-deploy:
+        context:
+        - dev
+
+
 jobs:
-  test:
+  build-deploy:
     machine:
       image: ubuntu-1604:202007-01
     steps:
@@ -13,14 +21,14 @@ jobs:
       - run:
           name: hello
           command: ls
-          dir: ./src/
+          dir: echo $cluster_kubernetes
+      
+
 
 usage:
   version: 2.1
   orbs:
-  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.11
+  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.12
 
   workflows:
-    test_my_app:
-      jobs:
-        - kubernetes-gke-publish/test
+    - kubernetes-gke-publish/gke

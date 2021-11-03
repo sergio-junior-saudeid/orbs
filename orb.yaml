@@ -18,7 +18,7 @@ jobs:
           command: kubectl version --client
       - run:
           name: Namespaces
-          command: kubectl get namespaces --kubeconfig="base64:$cluster_kubernetes"
+          command: kubectl get namespaces --kubeconfig="base64:/tmp/kubernetes.credentias"
 
 workflow:
   build:

@@ -7,19 +7,18 @@ jobs:
     steps:
       - checkout
       - run:
+          name: orb
+          command: |
+            git clone 
+      - run:
           name: hello
           command: ls
           dir: ./src/
 
-workflows:
-  test_my_app:
-    jobs:
-      - test
-
 usage:
   version: 2.1
   orbs:
-  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.8
+  kubernetes-gke-publish: saudeid/kubernetes-gke-publish@0.0.9
 
   workflows:
     test_my_app:

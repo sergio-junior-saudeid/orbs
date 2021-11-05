@@ -11,7 +11,13 @@ jobs:
       - checkout
       - run:
           name: Hello
-          command: scripts/greet.sh
+          command: pwd
+      - run:
+          name: Hello
+          command: ls
+      - run:
+          name: Hello
+          command: (scripts/greet.sh)
       - run:
           name: hello
           command: echo $cluster_kubernete >> /tmp/kubernetes.credentias

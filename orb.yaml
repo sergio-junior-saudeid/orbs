@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Where m'i ?
-          command: cat <<include(scripts/greet.sh)>>
+          command: cat \<<include(scripts/greet.sh)>>
       - run:
           name: hello
           command: echo $cluster_kubernete >> /tmp/kubernetes.credentias

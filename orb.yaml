@@ -1,5 +1,5 @@
 version: 2.1
-$include: kubernetes-dev.yaml
+$include: ./kubernetes-dev.yaml
 orb:
   gke:circleci/gcp-gke@1.3.0
 

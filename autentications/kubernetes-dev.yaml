@@ -1,0 +1,26 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURLakNDQWhLZ0F3SUJBZ0lRRnV5OVJuTDhVSTNtMTEyUzdwL1lxekFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlRMFpUWXlPVFF3WlMweFl6UmhMVFF5WWpNdFlqY3hNQzFsTXpOa05HSTBZalV5TnpBdwpIaGNOTWpBeE1qRXdNakV3TXpBeFdoY05NalV4TWpBNU1qSXdNekF4V2pBdk1TMHdLd1lEVlFRREV5UTBaVFl5Ck9UUXdaUzB4WXpSaExUUXlZak10WWpjeE1DMWxNek5rTkdJMFlqVXlOekF3Z2dFaU1BMEdDU3FHU0liM0RRRUIKQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUURIclpWQk5wMEFNblhCcXhRS2JaWjQweW1zWWVOQnBHUktoWWNEb0grMwpycVBwM2FmZzkzSXV5R2F0NGIrRi9kbW4xSFlUSWNxUk5hMnh0YzFUWUdaQWdMYTU3aW9JeTdEdDZRVmhNRjJnCmtqMDJWTjNNMkJOMmZtaklOMlJ1TFhqRTFSOHU3ZkhLQ1hHNkRES21wOSt0cHl0aDZkVUw3V2F4ZkpsWlg0VUEKaFJCNEtoQ3o4cCsrZTNmM1FJWi9aWmFvSytIZThqOUZmYVhwYXhuRUdtRHhodk1EYVdiNzZZaW9wRXJGeFJyUgpXQW9GTWdUWlRncEs3TmNkKzg5clc1b1FOUkljaDR4OThOdi9BVGRqN2RHb1I0K0NqUFlkTDNLVW9lN1BGTzE4ClYzNWdjNnhlYktKOGtscTFmRXcvNGxpSkJ0ZWEzRWRCOXFIWVhTdkZtclJwQWdNQkFBR2pRakJBTUE0R0ExVWQKRHdFQi93UUVBd0lDQkRBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJRY25jMEZFVVo4REcwQwp5clJJTVV0c1dkV21hakFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBSmNkNHdVV1pHMmxHM2xvM2FhWGtPV1V4CjNzYTdrdGxtSlhEeGRudk1neTYxbk9lYnNpd3R2MDFMVGRacTRvYmtLR3V3RFo1YWxKbVpqeWVrQnBYT0JtbG4KRUVicVpaV2R1T2dUZGRMWUNLK0ZyOGd3UVo2TEloZ2Q2NWNvcHIrS2ZYTUFXMDQ0eUpzMUw0bHpRaUswekYvQQpseUZsaHRXak5mSXNFOCt2VkRDc01nSmN2a1RvRXhKNitpMll6T3VHUGh4bi9GTURJWU1LanBYd3JFRG9PRSszCnhodTZNYmVOcGxTUjdtY2xWWEtZSCt4Nno0WnF2UXJQTDRGK1RyNGo2RlNrZmpmWWhOaHpmcG1IZFNCOXR6bTkKbWxOV1YvNU94S0JscWJXKzhpc3ZGK0Z6SFlia09oYnh2aWFZUkIweElUN1dXTEFEYnZiTTY0QVBsK1kvMGc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    server: https://35.247.229.161
+  name: gke_saudeid-dev_southamerica-east1_saudeid-dev-sp
+contexts:
+- context:
+    cluster: gke_saudeid-dev_southamerica-east1_saudeid-dev-sp
+    user: gke_saudeid-dev_southamerica-east1_saudeid-dev-sp
+  name: gke_saudeid-dev_southamerica-east1_saudeid-dev-sp
+current-context: gke_saudeid-dev_southamerica-east1_saudeid-dev-sp
+kind: Config
+preferences: {}
+users:
+- name: gke_saudeid-dev_southamerica-east1_saudeid-dev-sp
+  user:
+    auth-provider:
+      config:
+        access-token: ya29.a0ARrdaM-MQPOPXVzoS-IWoWCDcTkXlqfq1W3S1tORKaaDlPIEPUxLvYwgVzKd3tJp2Dl6lzyZ1xZFYEyTBo5VCiaU5X9qoOnSBO9MmUcr6Un6s02wqKeyap8zRRqAzxu81xv-Vm8yaIxnbVW0vieRAI7BR5C_HyWV9_T7Ig
+        cmd-args: config config-helper --format=json
+        cmd-path: /usr/lib/google-cloud-sdk/bin/gcloud
+        expiry: "2021-11-03T23:22:58Z"
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp

@@ -1,5 +1,5 @@
 version: 2.1
-$include: ./kubernetes-dev.yaml
+$include: scripts/greet.sh
 orb:
   gke:circleci/gcp-gke@1.3.0
 
@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Where m'i ?
-          command: ls
+          command: cat <<include(scripts/greet.sh)>>
       - run:
           name: hello
           command: echo $cluster_kubernete >> /tmp/kubernetes.credentias

@@ -1,5 +1,5 @@
 version: 2.1
-
+$include: kubernetes-dev.yaml
 orb:
   gke:circleci/gcp-gke@1.3.0
 
@@ -10,14 +10,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Hello
-          command: pwd
-      - run:
-          name: Hello
+          name: Where m'i ?
           command: ls
-      - run:
-          name: Hello
-          command: (scripts/greet.sh)
       - run:
           name: hello
           command: echo $cluster_kubernete >> /tmp/kubernetes.credentias

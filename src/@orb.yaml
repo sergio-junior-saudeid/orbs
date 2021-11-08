@@ -5,10 +5,6 @@ orb:
 
 jobs:
   test:
-    branches:
-      only:
-        - dev*
-        - release/*
     machine:
       image: ubuntu-1604:202007-01
     steps:

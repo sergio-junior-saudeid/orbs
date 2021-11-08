@@ -10,11 +10,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Check Scripts
-          command: |
-            find . -type f -name '*.sh' | wc -l
-            find . -type f -name '*.sh' | xargs shellcheck --external-sources
-      - run:
           name: test
           command: $include(scripts/greet.sh)
       - run:

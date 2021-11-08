@@ -5,16 +5,22 @@ orb:
 
 jobs:
   test:
+    branches:
+      only:
+        - dev*
+        - release/*
     machine:
       image: ubuntu-1604:202007-01
     steps:
       - checkout
       - run:
-          name: test
-          command: cd ..
+          name: Check Scripts
+          command: |
+            find . -type f -name '*.sh' | wc -l
+            find . -type f -name '*.sh' | xargs shellcheck --external-sources
       - run:
-          name: test2
-          command: ls
+          name: test
+          command: $include(scripts/greet.sh)
       - run:
           name: hello
           command: echo $cluster_kubernete >> /tmp/kubernetes.credentias

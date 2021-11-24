@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: {{environment}}-{{Name}}
+  namespace: {{namespace}}
+spec:
+  host: {{environment}}-{{Name}}
+  trafficPolicy:
+    outlierDetection:
+      consecutiveErrors: 7
+      interval: 30s
+      baseEjectionTime: 30s

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "teste-helm.environment" . }}-{{ include "teste-helm.name" . }}
+  namespace: {{ include "teste-helm.namespace" . }}
+  labels:
+    {{- include "teste-helm.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.http }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: {{ .Values.service.https }}
+      targetPort: http
+      protocol: TCP
+      name: https
+  selector:
+    {{- include "teste-helm.selectorLabels" . | nindent 4 }}

@@ -1,0 +1,13 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  finalizers:
+  - networking.gke.io/ingress-finalizer-V2
+  name: ingress-{{ include "teste-helm.name" . }}
+  namespace: {{ include "teste-helm.namespace" . }}
+spec:
+  backend:
+    serviceName: {{ include "teste-helm.environment" . }}-{{ include "teste-helm.name" . }}
+    servicePort: 443
+{{- end }}

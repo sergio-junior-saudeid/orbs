@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "teste-helm.name" . }}-vservice
+  namespace: {{ include "teste-helm.namespace" . }}
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - {{ include "teste-helm.environment" . }}-{{ include "teste-helm.name" . }}-gateway
+  http:
+  - match:
+    - uri:
+        prefix: "/{{ include "teste-helm.environment" . }}-{{ include "teste-helm.name" . }}/"
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: {{ include "teste-helm.environment" . }}-{{ include "teste-helm.name" . }}
+      weight: 100

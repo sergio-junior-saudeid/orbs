@@ -1,0 +1,32 @@
+ sed -i ''s/{{namespace}}/${{ parameters.namespace }}/g''
+ sed -i ''s/{{Name}}/${{ parameters.app }}/g''
+ sed -i ''s/{{BuildId}}/$(Build.BuildId)/g''
+ sed -i ''s/{{environment}}/$(Environment.Name)/g''
+ sed -i ''s/{{environment}}/$(Environment.Name)/g''
+
+helm upgrade --install --set app.name:${{ parameters.app }} app.namespace=${{ parameters.namespace }} --set app.environment=$(Environment.Name) --set image.repository=celcoinregistry.azurecr.io/${{ parameters.app }}:$(Environment.Name)-$(Build.BuildId) --set autoscaling.enabled=${{ parameters.autoscale }}
+
+helm upgrade --install --set app.namespace=$namespace --set app.environment=$environment --set image.repository=nginx --set autoscaling.enabled=false
+
+--set app.name=${{ parameters.app }} --set app.namespace=${{ parameters.namespace }} --set app.environment=${{ parameters.environment }} --set image.repository=celcoinregistry.azurecr.io/${{ parameters.app }}:${{ parameters.environment }}-$(Build.BuildId) --set autoscaling.enabled=${{ parameters.autoscale }} --set app.release=${{ parameters.release }} --set configmap.enabled=${{ parameters.variables }}
+
+        environment: dev
+        namespace: ${{ parameters.namespace }}
+        release: dev-${{ parameters.app }}
+        app: ${{ parameters.app }}
+        stage: Development
+        nextjs: ${{ parameters.nextjs }}
+        migration: ${{ parameters.migration }}
+        deploymentconfig: ${{ parameters.deploymentconfig }}
+        virtualservice: ${{ parameters.virtualservice }}
+        coveragetest: ${{ parameters.coveragetest }}
+        autoscale: ${{ parameters.autoscale }}
+        variables: ${{ parameters.variables }}
+
+--set app.name=${{ parameters.app }} --set app.namespace=${{ parameters.namespace }} --set app.environment=${{ parameters.environment }} --set image.repository=gcr.io/saudeid-prd/${{ parameters.namespace }}/${{ parameters.app }}:${{ parameters.environment }}-$(Build.BuildId) --set autoscaling.enabled=${{ parameters.autoscale }} --set ingress.enabled=${{ parameters.nextjs }} --set app.release=${{ parameters.release }} --set configmap.enabled=${{ parameters.variables }}
+
+
+app:
+  name: 
+  namespace: $namespace
+  environment: $environment  

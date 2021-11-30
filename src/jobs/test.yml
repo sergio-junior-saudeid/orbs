@@ -7,9 +7,6 @@ machine:
 steps:
   - checkout
   - run:
-      name: test
-      command: << include(autentication/kubernetes-dev.yaml) >>
-  - run:
       name: kubeconfig
       command: echo $K8S_CREDENTIALS_JSON
   - run:

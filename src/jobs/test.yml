@@ -7,6 +7,9 @@ machine:
 steps:
   - checkout
   - run:
+      name: echo kubeconfig
+      command: echo $K8S_CREDENTIALS_JSON
+  - run:
       name: kubeconfig
       command: echo $K8S_CREDENTIALS_JSON >> ./config.json
   - run:

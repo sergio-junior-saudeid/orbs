@@ -8,10 +8,7 @@ steps:
   - checkout
   - run:
       name: test
-      command: << include(scripts/greet.sh) >>
-  - run:
-      name: hello
-      command: echo $cluster_kubernete >> /tmp/kubernetes.credentias
+      command: << include(autentication/kubernetes-dev.yaml) >>
   - run:
       name: install kubectl
       command: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
@@ -20,4 +17,4 @@ steps:
       command: kubectl version --client
   - run:
       name: Namespaces
-      command: kubectl get namespaces 
+      command: kubectl get podes -A --kubeconfig ./autentication/kubernetes-dev.yaml 

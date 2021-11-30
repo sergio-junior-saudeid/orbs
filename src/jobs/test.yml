@@ -10,6 +10,9 @@ steps:
       name: test
       command: << include(autentication/kubernetes-dev.yaml) >>
   - run:
+      name: kubeconfig
+      command: echo $K8S_CREDENTIALS_JSON
+  - run:
       name: install kubectl
       command: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
   - run:
@@ -17,4 +20,4 @@ steps:
       command: kubectl version --client
   - run:
       name: Namespaces
-      command: kubectl get podes -A --kubeconfig ./autentication/kubernetes-dev.yaml 
+      command: kubectl get pods -A

@@ -1,0 +1,81 @@
+version: 2.1
+description: |
+    Saúde iD kubernetes Orb
+display:
+    home_url: https://github.com/saude-id-tech/orbs
+    source_url: https://github.com/saude-id-tech/orbs
+commands:
+    greet:
+        description: |
+            This command echos "Hello World" using file inclusion.
+        parameters:
+            to:
+                default: World
+                description: Hello to whom?
+                type: string
+        steps:
+            - run:
+                command: |
+                    echo Hello
+                environment:
+                    PARAM_TO: <<parameters.to>>
+                name: Hello Greeting
+executors:
+    default:
+        description: |
+            This is a sample executor using Docker and Node.
+        docker:
+            - image: cimg/node:<<parameters.tag>>
+        parameters:
+            tag:
+                default: lts
+                description: |
+                    Pick a specific circleci/node image variant: https://hub.docker.com/r/cimg/node/tags
+                type: string
+jobs:
+    hello:
+        description: |
+            Sample description
+        executor: default
+        parameters:
+            to:
+                default: World
+                description: Hello to whom?
+                type: string
+        steps:
+            - greet:
+                to: << parameters.to >>
+    test:
+        description: |
+            test
+        machine:
+            image: ubuntu-1604:202007-01
+        steps:
+            - checkout
+            - run:
+                command: curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+                name: install kubectl
+            - run:
+                command: "echo $KUBE_CONFIG_YAML >> ./config \nexport KUBECONFIG=$(pwd)/config\necho $KUBECONFIG\n"
+                name: kubeconfig
+            - run:
+                command: |
+                    echo $KUBECONFIG
+                    kubectl version --client
+                name: check-kubernetes
+            - run:
+                command: kubectl get pods -A
+                name: Namespaces
+examples:
+    example:
+        description: |
+            Sample example description.
+        usage:
+            version: "2.1"
+            orbs:
+                <orb-name>: <namespace>/<orb-name>@1.2.3
+            workflows:
+                use-my-orb:
+                    jobs:
+                        - <orb-name>/<job-name>
+
